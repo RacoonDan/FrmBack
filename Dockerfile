@@ -1,13 +1,14 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
 RUN docker-php-ext-install mysqli
 
-# Dejar un único MPM activo (prefork, el que usa mod_php)
-RUN rm -f /etc/apache2/mods-enabled/mpm_*.load /etc/apache2/mods-enabled/mpm_*.conf \
-    && a2enmod mpm_prefork
-
 COPY uploads.ini /usr/local/etc/php/conf.d/uploads.ini
-COPY . /var/www/html/
+
+WORKDIR /app
+COPY . /app
+
+# Varios procesos para atender envíos simultáneos
+ENV PHP_CLI_SERVER_WORKERS=4
 
 # Railway indica el puerto en la variable PORT
-CMD sed -i "s/80/${PORT:-80}/g" /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf && apache2-foreground
+CMD ["sh", "-c", "php -S 0.0.0.0:${PORT:-8080} -t /app"]
