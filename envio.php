@@ -22,7 +22,7 @@ function pagina(bool $ok, string $titulo, array $mensajes): void
     foreach ($mensajes as $m) {
         echo '<li>' . htmlspecialchars($m) . '</li>';
     }
-    echo '</ul></div><a href="formulario.html" class="btn btn-navidad w-100">'
+    echo '</ul></div><a href="index.html" class="btn btn-navidad w-100">'
        . ($ok ? 'Registrar otro' : 'Volver al formulario') . '</a>'
        . '</div></div></div></div></main></body></html>';
     exit;
