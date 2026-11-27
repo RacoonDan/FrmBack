@@ -1,5 +1,7 @@
 <?php
 // imagen.php?id=REGISTRO&n=1|2|3  -> muestra una imagen guardada en la base de datos
+require __DIR__ . '/auth.php';
+requerir_acceso(false);
 require __DIR__ . '/conexion.php';
 
 $id = (int)($_GET['id'] ?? 0);
