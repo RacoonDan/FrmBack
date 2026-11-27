@@ -67,7 +67,7 @@ $protegido = ((string)getenv('CLAVE_VER') !== '');
         <div class="container">
             <a class="navbar-brand fw-bold" href="ver.php">🎄 Back Office Mood navidad</a>
             <div class="d-flex gap-2">
-                <a href="formulario.html" class="btn btn-sm btn-outline-light">Ir al formulario</a>
+                <a href="index.html" class="btn btn-sm btn-outline-light">Ir al formulario</a>
                 <?php if ($protegido): ?>
                     <a href="ver.php?salir=1" class="btn btn-sm btn-outline-light">Salir</a>
                 <?php endif; ?>
